@@ -1,0 +1,13 @@
+.chores {
+    font-family: monospace;
+}
+
+h3 {
+    font-size: 1.5vmax;
+    text-decoration: underline;
+}
+
+ul {
+    font-size: 1.25vmax;
+    font-style: italic;
+}

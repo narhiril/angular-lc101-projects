@@ -11,30 +11,30 @@
             <h3>Fuel Levels</h3>
             <p>Tank Full</p>
             <h3>Astronaut Chat</h3>
-            <p>Houston, we are ready when you are!</p>
+            <p>{{message}}</p>
          </div>
       </div>
 
       <div class="col-6">
-         <div class="shuttle-background" style="background-color: green">
-            <img src="assets/images/LaunchCode_rocketline_white.png" height = "75" width = "75" [style.left]="0" [style.bottom]="0"/>
+         <div #background class="shuttle-background" [style.backgroundColor]="color">
+            <img #rocketImage src="assets/images/LaunchCode_rocketline_white.png" height = "75" width = "75" [style.left]="0" [style.bottom]="0"/>
          </div>
       </div>
 
       <div class="col-3">
          <div class="container-right"b>
-            <button>Up</button>
-            <button>Down</button>
-            <button>Right</button>
-            <button>Left</button>
+            <button [disabled]="isLanded || !canMoveNext.up" (click)="moveRocket(rocketImage, background, 'up')">Up</button>
+            <button [disabled]="isLanded || !canMoveNext.down" (click)="moveRocket(rocketImage, background, 'down')">Down</button>
+            <button [disabled]="isLanded || !canMoveNext.right" (click)="moveRocket(rocketImage, background, 'right')">Right</button>
+            <button [disabled]="isLanded || !canMoveNext.left" (click)="moveRocket(rocketImage, background, 'left')">Left</button>
             <h3>Space Shuttle Height</h3>
-            <p>0 km</p>
+            <p>{{height}} km</p>
          </div>
       </div>
    </div>
    <div class="container-control-buttons">
-      <button>Take Off</button>
-      <button>Land</button>
-      <button>Abort Mission</button>
+      <button [disabled]="!isLanded" (click)="handleTakeOff(rocketImage)">Take Off</button>
+      <button [disabled]="isLanded" (click)="handleLanding(rocketImage)">Land</button>
+      <button [disabled]="isLanded" (click)="handleAbort(rocketImage)">Abort Mission</button>
    </div>
 </div>
